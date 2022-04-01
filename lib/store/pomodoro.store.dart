@@ -30,16 +30,9 @@ abstract class _PomodoroStore with Store{
 
   Timer? stopwatch;
 
-  @action
-  void workTimeIncrement() {
-    workTime++;
-  }
-
-
   @action 
   void toStart() {
     start = true;
-    // alternar a duração da função para milesegusdos/segundos
     stopwatch = Timer.periodic(Duration(seconds: 1), (timer) {
       if(minutes == 0 && seconds == 0) {
         _alternateTypeInterval();
@@ -61,23 +54,40 @@ abstract class _PomodoroStore with Store{
   @action
   void toRestart() {
     toStop();
-    minutes = 0;
+    minutes = beWorking() ? workTime : restTime;
     seconds = 0;
+  }
+
+  @action
+  void workTimeIncrement() {
+    workTime++;
+    if(beWorking()){
+      toRestart();
+    }
   }
 
   @action 
   void workTimeDecrement() {
     workTime--;
+    if(beWorking()){
+      toRestart();
+    }
   }
 
   @action
   void restTimeIncrement() {
     restTime++;
+    if(beRest()) {
+      toRestart();
+    }
   }
 
   @action 
   void restTimeDecrement() {
     restTime--;
+    if(beRest()) {
+      toRestart();
+    }
   }
 
   bool beWorking() {

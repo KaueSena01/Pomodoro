@@ -28,14 +28,22 @@ class PomodoroScreen extends StatelessWidget {
                 TimeEntry(
                   title: 'Trabalho', 
                   value: store.workTime,
-                  inc: store.workTimeIncrement,
-                  dec: store.workTimeDecrement,
+                  inc: store.start && store.beWorking() 
+                  ? null
+                  : store.workTimeIncrement,
+                  dec: store.start && store.beWorking() 
+                  ? null
+                  : store.workTimeDecrement
                 ),
                 TimeEntry(
                   title: 'Descanso', 
                   value: store.restTime,
-                  inc: store.restTimeIncrement,
-                  dec: store.restTimeDecrement,
+                  inc: store.start && store.beRest() 
+                  ? null
+                  : store.restTimeIncrement,
+                  dec: store.start && store.beRest() 
+                  ? null
+                  : store.restTimeIncrement,
                 )
               ],
             ), 

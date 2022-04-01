@@ -103,17 +103,6 @@ mixin _$PomodoroStore on _PomodoroStore, Store {
       ActionController(name: '_PomodoroStore');
 
   @override
-  void workTimeIncrement() {
-    final _$actionInfo = _$_PomodoroStoreActionController.startAction(
-        name: '_PomodoroStore.workTimeIncrement');
-    try {
-      return super.workTimeIncrement();
-    } finally {
-      _$_PomodoroStoreActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void toStart() {
     final _$actionInfo = _$_PomodoroStoreActionController.startAction(
         name: '_PomodoroStore.toStart');
@@ -141,6 +130,17 @@ mixin _$PomodoroStore on _PomodoroStore, Store {
         name: '_PomodoroStore.toRestart');
     try {
       return super.toRestart();
+    } finally {
+      _$_PomodoroStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void workTimeIncrement() {
+    final _$actionInfo = _$_PomodoroStoreActionController.startAction(
+        name: '_PomodoroStore.workTimeIncrement');
+    try {
+      return super.workTimeIncrement();
     } finally {
       _$_PomodoroStoreActionController.endAction(_$actionInfo);
     }
