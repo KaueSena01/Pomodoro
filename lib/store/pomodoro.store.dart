@@ -68,9 +68,11 @@ abstract class _PomodoroStore with Store{
 
   @action 
   void workTimeDecrement() {
-    workTime--;
-    if(beWorking()){
-      toRestart();
+    if(workTime > 1) {   
+      workTime--;
+      if(beWorking()){
+        toRestart();
+      }
     }
   }
 
@@ -84,11 +86,13 @@ abstract class _PomodoroStore with Store{
 
   @action 
   void restTimeDecrement() {
-    restTime--;
-    if(beRest()) {
-      toRestart();
+    if(restTime > 1) {
+      restTime--;
+      if(beRest()) {
+        toRestart();
+      }
     }
-  }
+  } 
 
   bool beWorking() {
     return typeInterval == TypeInterval.WORK;

@@ -43,7 +43,7 @@ class PomodoroScreen extends StatelessWidget {
                   : store.restTimeIncrement,
                   dec: store.start && store.beRest() 
                   ? null
-                  : store.restTimeIncrement,
+                  : store.restTimeDecrement,
                 )
               ],
             ), 
