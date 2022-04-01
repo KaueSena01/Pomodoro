@@ -84,6 +84,21 @@ mixin _$PomodoroStore on _PomodoroStore, Store {
     });
   }
 
+  final _$typeIntervalAtom = Atom(name: '_PomodoroStore.typeInterval');
+
+  @override
+  TypeInterval get typeInterval {
+    _$typeIntervalAtom.reportRead();
+    return super.typeInterval;
+  }
+
+  @override
+  set typeInterval(TypeInterval value) {
+    _$typeIntervalAtom.reportWrite(value, super.typeInterval, () {
+      super.typeInterval = value;
+    });
+  }
+
   final _$_PomodoroStoreActionController =
       ActionController(name: '_PomodoroStore');
 
@@ -171,7 +186,8 @@ start: ${start},
 minutes: ${minutes},
 seconds: ${seconds},
 workTime: ${workTime},
-restTime: ${restTime}
+restTime: ${restTime},
+typeInterval: ${typeInterval}
     ''';
   }
 }

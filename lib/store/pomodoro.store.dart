@@ -4,6 +4,8 @@ part 'pomodoro.store.g.dart';
 
 class PomodoroStore = _PomodoroStore with _$PomodoroStore;
 
+enum TypeInterval { WORK, REST }
+
 abstract class _PomodoroStore with Store{
 
   @observable
@@ -20,6 +22,9 @@ abstract class _PomodoroStore with Store{
 
   @observable
   int restTime = 1;
+
+  @observable
+  TypeInterval typeInterval = TypeInterval.REST;
 
   @action
   void workTimeIncrement() {
@@ -57,4 +62,11 @@ abstract class _PomodoroStore with Store{
     restTime--;
   }
 
+  bool beWorking() {
+    return typeInterval == TypeInterval.WORK;
+  }
+  
+  bool beRest() {
+    return typeInterval == TypeInterval.REST;
+  }
 }
