@@ -4,11 +4,13 @@ class StopWatchButton extends StatelessWidget {
   const StopWatchButton({ 
     Key? key,
     required this.text,
-    required this.icon
+    required this.icon,
+    this.click
     }) : super(key: key);
 
     final String text;
     final IconData icon;
+    final void Function()? click;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class StopWatchButton extends StatelessWidget {
           )
         ],
       ),
-      onPressed: () {},
+      onPressed: click,
     );
   }
 }

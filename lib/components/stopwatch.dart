@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:pomodoro/components/stopwatch_button.dart';
+import 'package:provider/provider.dart';
+
+import '../store/pomodoro.store.dart';
 
 class StopWatch extends StatelessWidget {
   const StopWatch({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final store = Provider.of<PomodoroStore>(context);
+    
     return Container(
       color: Colors.red,
       child: Column(
@@ -18,17 +24,33 @@ class StopWatch extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Text(
-            "25:00",
+            "${store.minutes.toString().padLeft(2, '0')}:${store.seconds.toString().padLeft(2, '0')}",
             style: TextStyle(fontSize: 120, color: Colors.white),
           ),
           SizedBox(height: 20),
-          Row(
+          Observer(
+            builder: (_) => Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              StopWatchButton(text: "Iniciar", icon: Icons.play_arrow),
-              // StopWatchButton(text: "Parar", icon: Icons.stop),
-              StopWatchButton(text: "Reiniciar", icon: Icons.refresh)
+              if(!store.start)
+              StopWatchButton(
+                text: "Iniciar", 
+                icon: Icons.play_arrow,
+                click: store.toStart,
+              ),
+              if(store.start)
+              StopWatchButton(
+                text: "Parar", 
+                icon: Icons.stop,
+                click: store.toStop,
+              ),
+              StopWatchButton(
+                text: "Reiniciar", 
+                icon: Icons.refresh,
+                click: store.toRestart,
+              )
             ],
+          )
           )
         ],
       ),

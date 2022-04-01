@@ -5,10 +5,14 @@ class TimeEntry extends StatelessWidget {
     Key? key,
     required this.title,
     required this.value,
+    this.inc,
+    this.dec,
   }) : super(key: key);
 
   final String title;
   final int value;
+  final void Function()? inc;
+  final void Function()? dec;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,7 @@ class TimeEntry extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () {}, 
+              onPressed: this.dec, 
               child: Icon(Icons.arrow_downward, color: Colors.white),
               style: ElevatedButton.styleFrom(
                 shape: CircleBorder(),
@@ -31,7 +35,7 @@ class TimeEntry extends StatelessWidget {
             ),
             Text('${this.value} min', style: TextStyle(fontSize: 18)),
             ElevatedButton(
-              onPressed: () {}, 
+              onPressed: this.inc, 
               child: Icon(Icons.arrow_upward, color: Colors.white),
               style: ElevatedButton.styleFrom(
                 shape: CircleBorder(),
