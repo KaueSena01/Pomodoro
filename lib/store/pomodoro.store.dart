@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:mobx/mobx.dart';
 
 part 'pomodoro.store.g.dart';
@@ -24,7 +26,9 @@ abstract class _PomodoroStore with Store{
   int restTime = 1;
 
   @observable
-  TypeInterval typeInterval = TypeInterval.REST;
+  TypeInterval typeInterval = TypeInterval.WORK;
+
+  Timer? stopwatch;
 
   @action
   void workTimeIncrement() {
@@ -35,16 +39,30 @@ abstract class _PomodoroStore with Store{
   @action 
   void toStart() {
     start = true;
+    // alternar a duração da função para milesegusdos/segundos
+    stopwatch = Timer.periodic(Duration(seconds: 1), (timer) {
+      if(minutes == 0 && seconds == 0) {
+        _alternateTypeInterval();
+      } else if(seconds == 0) {
+        seconds = 59;
+        minutes--;
+      } else {
+        seconds--;
+      }
+    });
   }
 
   @action
   void toStop() {
     start = false;
+    stopwatch?.cancel();
   }
 
   @action
   void toRestart() {
-    start = false;
+    toStop();
+    minutes = 0;
+    seconds = 0;
   }
 
   @action 
@@ -65,8 +83,20 @@ abstract class _PomodoroStore with Store{
   bool beWorking() {
     return typeInterval == TypeInterval.WORK;
   }
-  
+
   bool beRest() {
     return typeInterval == TypeInterval.REST;
+  }
+
+  void _alternateTypeInterval() {
+    if(beWorking()) {
+      typeInterval = TypeInterval.REST;
+      minutes = restTime;
+    } else {
+      typeInterval = TypeInterval.WORK;
+      minutes = workTime;
+    }
+
+    seconds = 0;
   }
 }
