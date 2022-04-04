@@ -1,16 +1,38 @@
-# pomodoro
+## Pomodoro
 
-A new Flutter project.
+The Pomodoro technique, developed in 1988 by Francisco Cirillo, is an Italian time management method that can be applied to various tasks, whether in studies or at work. [About pomodoro](https://brasilescola.uol.com.br/dicas-de-estudo/tecnica-pomodoro-que-e-e-como-funciona.htm)
 
-## Getting Started
+## About application
 
-This project is a starting point for a Flutter application.
+Simple app using Flutter with Mob-x to manage activities with rest time.
 
-A few resources to get you started if this is your first Flutter project:
+Used packages: 
+* mobx
+* flutter_mobx
+* provider
+* build_runner
+* mobx_codegen
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+To run the project use the following commands
+```bash
+# Clone this project
+$ git clone https://github.com/KaueSena01/Pomodoro
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Execute
+$ flutter pub get
+
+# Run
+$ flutter run
+```
+Application screenshots
+<div style="text-align: center"><table><tr>
+   <td style="text-align: center">
+    <img width="300" alt="" src="https://github.com/KaueSena01/Pomodoro/blob/master/demo%20video/video%201.gif">
+  </td>
+  <td style="text-align: center">
+    <img width="300" alt=" Twitter Meteo" src="https://github.com/KaueSena01/Pomodoro/blob/master/demo%20video/video%202.gif">
+  </td>
+</tr>
+</table></div>
+
+This application was built based on the [Cod3r](https://brasilescola.uol.com.br/dicas-de-estudo/tecnica-pomodoro-que-e-e-como-funciona.htm) project.
