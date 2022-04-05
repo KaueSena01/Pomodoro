@@ -35,4 +35,4 @@ Application screenshots
 </tr>
 </table></div>
 
-This application was built based on the [Cod3r](https://brasilescola.uol.com.br/dicas-de-estudo/tecnica-pomodoro-que-e-e-como-funciona.htm) project.
+This application was built based on the [Cod3r](https://www.youtube.com/watch?v=LeRjIY4n2Vk) project.
