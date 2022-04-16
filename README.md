@@ -30,7 +30,7 @@ Application screenshots
     <img width="300" alt="" src="https://github.com/KaueSena01/Pomodoro/blob/master/demo%20video/video%201.gif">
   </td>
   <td style="text-align: center">
-    <img width="300" alt=" Twitter Meteo" src="https://github.com/KaueSena01/Pomodoro/blob/master/demo%20video/video%202.gif">
+    <img width="300" alt="" src="https://github.com/KaueSena01/Pomodoro/blob/master/demo%20video/video%202.gif">
   </td>
 </tr>
 </table></div>
